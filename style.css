@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Patrick+Hand&display=swap');
+:root{--geel:#F2C230;--inkt:#141419;--papier:#FBFAF5;--grijs:#3A3A44}
+*{box-sizing:border-box}
+body{margin:0;background:var(--geel);color:var(--inkt);font-family:'Patrick Hand',system-ui,sans-serif;font-size:20px;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:40px 16px 64px}
+.kaart{background:var(--papier);border:4px solid var(--inkt);border-radius:22px;padding:28px 24px;margin-top:24px}
+h1,h2{font-family:'Patrick Hand SC',sans-serif;line-height:1.05;margin:0 0 12px}
+h1{font-size:56px;transform:rotate(-1.5deg)}
+h2{font-size:32px;margin-top:24px}
+a{color:var(--inkt);text-decoration-thickness:3px}
+.pim{width:160px;height:160px;border-radius:50%;border:4px solid var(--inkt);display:block}
+.klein{color:var(--grijs);font-size:17px}
+nav a{margin-right:16px;font-family:'Patrick Hand SC',sans-serif}
+code{background:#fff;border:2px solid var(--inkt);border-radius:8px;padding:6px 10px;display:inline-block;word-break:break-all;font-size:18px}

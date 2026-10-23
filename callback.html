@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<title>Koppeling | Het Nieuws, Ongeveer</title><link rel="icon" href="pim.png"><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<img class="pim" src="pim.png" alt="">
+<h1 id="kop">Koppeling…</h1>
+<div class="kaart" id="inhoud"><p>Even geduld.</p></div>
+</main>
+<script>
+const p = new URLSearchParams(location.search);
+const code = p.get('code'), err = p.get('error') || p.get('error_description');
+const kop = document.getElementById('kop'), box = document.getElementById('inhoud');
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+if (code) {
+  kop.textContent = 'Gelukt. Ongeveer.';
+  box.innerHTML = '<p>Kopieer deze code en geef hem aan Claude. Hij is maar een paar minuten geldig.</p><p><code id="c">' + esc(code) + '</code></p><p><button onclick="navigator.clipboard.writeText(document.getElementById(\'c\').textContent);this.textContent=\'Gekopieerd\'">Kopieer code</button></p>';
+} else if (err) {
+  kop.textContent = 'Dat ging mis.';
+  box.innerHTML = '<p>' + esc(err) + '</p>';
+} else {
+  kop.textContent = 'Hier komt de koppelcode.';
+  box.innerHTML = '<p>Deze pagina toont de code na het inloggen bij TikTok, YouTube of Instagram.</p>';
+}
+</script>
+</body></html>
