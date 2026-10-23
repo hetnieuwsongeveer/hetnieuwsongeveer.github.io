@@ -10,11 +10,13 @@
 <script>
 const p = new URLSearchParams(location.search);
 const code = p.get('code'), err = p.get('error') || p.get('error_description');
+const platform = p.get('state') || '';
+const wf = 'https://github.com/hetnieuwsongeveer/het-nieuws-ongeveer/actions/workflows/koppelen.yml';
 const kop = document.getElementById('kop'), box = document.getElementById('inhoud');
 function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 if (code) {
   kop.textContent = 'Gelukt. Ongeveer.';
-  box.innerHTML = '<p>Kopieer deze code en geef hem aan Claude. Hij is maar een paar minuten geldig.</p><p><code id="c">' + esc(code) + '</code></p><p><button onclick="navigator.clipboard.writeText(document.getElementById(\'c\').textContent);this.textContent=\'Gekopieerd\'">Kopieer code</button></p>';
+  box.innerHTML = '<p>' + (platform ? '<strong>' + esc(platform) + '</strong>: ' : '') + 'kopieer deze code. Hij is maar kort geldig, dus plak hem meteen.</p><p><code id="c">' + esc(code) + '</code></p><p><button onclick="navigator.clipboard.writeText(document.getElementById(\'c\').textContent);this.textContent=\'Gekopieerd\'">Kopieer code</button></p><p>Ga daarna naar <a href="' + wf + '">GitHub &gt; Account koppelen</a>, klik <em>Run workflow</em>, kies <strong>' + (esc(platform) || 'het platform') + '</strong> en plak de code.</p>';
 } else if (err) {
   kop.textContent = 'Dat ging mis.';
   box.innerHTML = '<p>' + esc(err) + '</p>';
